@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.calindra.desafio.dto.DistanciaEnderecoDto;
 import com.calindra.desafio.dto.DistanciaEnderecoRequestDto;
 import com.calindra.desafio.dto.DistanciaEnderecoResponseDto;
-import com.calindra.desafio.dto.GeoCoordinate;
+import com.calindra.desafio.dto.GeoCoordinateDto;
 import com.calindra.desafio.exception.CoordinateNotFoundException;
 import com.calindra.desafio.exception.GeoApiServiceException;
 import com.calindra.desafio.service.EnderecoService;
@@ -25,10 +25,10 @@ public class EnderecoServiceImpl implements EnderecoService {
 		List<String> enderecos = requestDto.getEnderecos();
 		
 		for (int i = 0; i < enderecos.size(); i++) {
-			GeoCoordinate coordenadaFrom = geoApiProxyImpl.recuperarCoordenadas(enderecos.get(i));
+			GeoCoordinateDto coordenadaFrom = geoApiProxyImpl.recuperarCoordenadas(enderecos.get(i));
 
 			for (int j = i + 1; j < enderecos.size(); j++) {
-				GeoCoordinate coordenadaTo = geoApiProxyImpl.recuperarCoordenadas(enderecos.get(j));
+				GeoCoordinateDto coordenadaTo = geoApiProxyImpl.recuperarCoordenadas(enderecos.get(j));
 
 				Double distanceInKm = coordenadaFrom.getDistanceInKm(coordenadaTo);
 

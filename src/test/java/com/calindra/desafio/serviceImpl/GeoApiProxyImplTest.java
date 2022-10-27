@@ -14,8 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.calindra.desafio.builder.GeoCoordinateBuilder;
-import com.calindra.desafio.dto.GeoCoordinate;
+import com.calindra.desafio.builder.GeoCoordinateDtoBuilder;
+import com.calindra.desafio.dto.GeoCoordinateDto;
 import com.calindra.desafio.exception.CoordinateNotFoundException;
 import com.calindra.desafio.exception.GeoApiServiceException;
 import com.calindra.desafio.service.GeoApiService;
@@ -36,14 +36,14 @@ class GeoApiProxyImplTest {
 
 	@Test
 	void deveriaAcessarServicoQuandoCoordenadaDoEnderecoNaoExisteEmMemoria() throws GeoApiServiceException, CoordinateNotFoundException {
-		GeoCoordinate coordenadaMock = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMock = new GeoCoordinateDtoBuilder()
 				.latitude(PRIMEIRO_ENDERECO_LATITUDE)
 				.longitude(PRIMEIRO_ENDERECO_LONGITUDE)
 				.build();
 		
 		when(geoApiServiceImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO)).thenReturn(coordenadaMock);
 		
-		GeoCoordinate coordenada = geoApiProxyImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO);
+		GeoCoordinateDto coordenada = geoApiProxyImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO);
 		
 		assertEquals(coordenadaMock.getLatitude(), coordenada.getLatitude());
 		assertEquals(coordenadaMock.getLongitude(), coordenada.getLongitude());
@@ -52,7 +52,7 @@ class GeoApiProxyImplTest {
 	
 	@Test
 	void deveriaRecuperarDaMemoriaQuandoEnderecoJaConsultadoAntes() throws GeoApiServiceException, CoordinateNotFoundException {
-		GeoCoordinate coordenadaMock = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMock = new GeoCoordinateDtoBuilder()
 				.latitude(PRIMEIRO_ENDERECO_LATITUDE)
 				.longitude(PRIMEIRO_ENDERECO_LONGITUDE)
 				.build();
@@ -61,7 +61,7 @@ class GeoApiProxyImplTest {
 		
 		geoApiProxyImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO);
 		
-		GeoCoordinate coordenadaSegundaChamada = geoApiProxyImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO);
+		GeoCoordinateDto coordenadaSegundaChamada = geoApiProxyImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO);
 		assertEquals(coordenadaMock.getLatitude(), coordenadaSegundaChamada.getLatitude());
 		assertEquals(coordenadaMock.getLongitude(), coordenadaSegundaChamada.getLongitude());
 		verify(geoApiServiceImpl, times(1)).recuperarCoordenadas(PRIMEIRO_ENDERECO);

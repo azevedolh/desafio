@@ -10,7 +10,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.calindra.desafio.dto.GeoCoordinate;
+import com.calindra.desafio.dto.GeoCoordinateDto;
 import com.calindra.desafio.exception.CoordinateNotFoundException;
 import com.calindra.desafio.exception.GeoApiServiceException;
 
@@ -21,7 +21,7 @@ class GeoApiServiceImplTest {
 	@Test
 	void deveriaRetornarCoordenadasParaOEnderecoInformado() throws GeoApiServiceException, CoordinateNotFoundException {
 		GeoApiServiceImpl geoApiServiceImpl = new GeoApiServiceImpl(API_KEY);
-		GeoCoordinate coordenadas = geoApiServiceImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO); 
+		GeoCoordinateDto coordenadas = geoApiServiceImpl.recuperarCoordenadas(PRIMEIRO_ENDERECO); 
 		
 		assertEquals(PRIMEIRO_ENDERECO_LATITUDE, coordenadas.getLatitude());
 		assertEquals(PRIMEIRO_ENDERECO_LONGITUDE, coordenadas.getLongitude());

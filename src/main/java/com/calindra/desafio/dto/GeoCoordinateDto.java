@@ -1,11 +1,11 @@
 package com.calindra.desafio.dto;
 
-public class GeoCoordinate {
+public class GeoCoordinateDto {
 	private final int EARTH_RADIUS_KM = 6371;
 	private Double latitude;
 	private Double longitude;
 
-	public GeoCoordinate(Double latitude, Double longitude) {
+	public GeoCoordinateDto(Double latitude, Double longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
@@ -18,7 +18,7 @@ public class GeoCoordinate {
 		return longitude;
 	}
 
-	public Double getDistanceInKm(GeoCoordinate coordenadaTo) {
+	public Double getDistanceInKm(GeoCoordinateDto coordenadaTo) {
 		double firstLatToRad = Math.toRadians(this.getLatitude());
 		double secondLatToRad = Math.toRadians(coordenadaTo.getLatitude());
 

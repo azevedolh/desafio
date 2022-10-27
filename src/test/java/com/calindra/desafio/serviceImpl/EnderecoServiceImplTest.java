@@ -11,10 +11,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.calindra.desafio.builder.DistanciaEnderecoRequestDtoBuilder;
-import com.calindra.desafio.builder.GeoCoordinateBuilder;
+import com.calindra.desafio.builder.GeoCoordinateDtoBuilder;
 import com.calindra.desafio.dto.DistanciaEnderecoRequestDto;
 import com.calindra.desafio.dto.DistanciaEnderecoResponseDto;
-import com.calindra.desafio.dto.GeoCoordinate;
+import com.calindra.desafio.dto.GeoCoordinateDto;
 import com.calindra.desafio.exception.CoordinateNotFoundException;
 import com.calindra.desafio.exception.GeoApiServiceException;
 import com.calindra.desafio.service.GeoApiProxy;
@@ -40,13 +40,13 @@ class EnderecoServiceImplTest {
 				.addEndereco(TERCEIRO_ENDERECO)
 				.build();
 
-		GeoCoordinate coordenadaMockPrimeioEndereco = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMockPrimeioEndereco = new GeoCoordinateDtoBuilder()
 				.latitude(PRIMEIRO_ENDERECO_LATITUDE)
 				.longitude(PRIMEIRO_ENDERECO_LONGITUDE).build();
-		GeoCoordinate coordenadaMockSegundoEndereco = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMockSegundoEndereco = new GeoCoordinateDtoBuilder()
 				.latitude(SEGUNDO_ENDERECO_LATITUDE)
 				.longitude(SEGUNDO_ENDERECO_LONGITUDE).build();
-		GeoCoordinate coordenadaMockTerceiroEndereco = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMockTerceiroEndereco = new GeoCoordinateDtoBuilder()
 				.latitude(TERCEIRO_ENDERECO_LATITUDE)
 				.longitude(TERCEIRO_ENDERECO_LONGITUDE).build();
 

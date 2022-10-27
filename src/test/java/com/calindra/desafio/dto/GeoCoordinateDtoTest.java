@@ -5,16 +5,16 @@ import static com.calindra.desafio.constants.DesafioConstants.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.calindra.desafio.builder.GeoCoordinateBuilder;
+import com.calindra.desafio.builder.GeoCoordinateDtoBuilder;
 
-class GeoCoordinateTest {
+class GeoCoordinateDtoTest {
 
 	@Test
 	void deveriaCalcularDistanciaEntreDuasCoordenadasQuandoCoordenadaInformada() {
-		GeoCoordinate coordenadaMockPrimeioEndereco = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMockPrimeioEndereco = new GeoCoordinateDtoBuilder()
 				.latitude(PRIMEIRO_ENDERECO_LATITUDE)
 				.longitude(PRIMEIRO_ENDERECO_LONGITUDE).build();
-		GeoCoordinate coordenadaMockSegundoEndereco = new GeoCoordinateBuilder()
+		GeoCoordinateDto coordenadaMockSegundoEndereco = new GeoCoordinateDtoBuilder()
 				.latitude(SEGUNDO_ENDERECO_LATITUDE)
 				.longitude(SEGUNDO_ENDERECO_LONGITUDE).build();
 		

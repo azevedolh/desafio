@@ -3,7 +3,7 @@ package com.calindra.desafio.serviceImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.calindra.desafio.dto.GeoCoordinate;
+import com.calindra.desafio.dto.GeoCoordinateDto;
 import com.calindra.desafio.exception.CoordinateNotFoundException;
 import com.calindra.desafio.exception.GeoApiServiceException;
 import com.calindra.desafio.service.GeoApiService;
@@ -22,7 +22,7 @@ public class GeoApiServiceImpl implements GeoApiService {
 	}
 
 	@Override
-	public GeoCoordinate recuperarCoordenadas(String endereco)
+	public GeoCoordinateDto recuperarCoordenadas(String endereco)
 			throws GeoApiServiceException, CoordinateNotFoundException {
 		GeocodingResult[] response = null;
 
@@ -39,7 +39,7 @@ public class GeoApiServiceImpl implements GeoApiService {
 
 		LatLng location = response[0].geometry.location;
 		
-		return new GeoCoordinate(location.lat, location.lng);
+		return new GeoCoordinateDto(location.lat, location.lng);
 	}
 
 }
