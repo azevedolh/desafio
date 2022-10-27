@@ -18,8 +18,7 @@ $ git clone https://github.com/azevedolh/desafio.git
 	"enderecos": [
 		"String",
 		"String",
-		"String",
-		...
+		"String"
 	]
 }
 ```
